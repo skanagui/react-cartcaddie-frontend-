@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 
+
+
 export default class Item extends Component {
     render() {
         return (
             <div>
-        <h3>{this.props.items.name}</h3>
-        {/* <p>{this.props.item.content}</p>
-        <p>
-          <strong>-{this.props.poem.author}</strong>
-        </p> */}
+
+                <h2>{this.props.items.name}</h2>
+                <div src={this.props.items.image}></div>
+                <h3>${this.props.items.price}</h3>
+                <div>{this.props.items.description}</div>
         
         
-      </div>
-        )
+            </div>
+        );
     }
 }

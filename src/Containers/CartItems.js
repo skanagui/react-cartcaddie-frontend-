@@ -6,8 +6,8 @@ export default class CartItems extends Component {
     
     renderCartItems = () => {
         
-        return this.props.cartItems.map(cartItemObj => <CartItem cartItem = {cartItemObj} key ={cartItemObj.id}/>);
-        
+        const cartItem= this.props.cartItems.map(cartItemObj => <CartItem cartItem = {cartItemObj} key ={cartItemObj.id}/>);
+        return cartItem
     }
 
     render() {

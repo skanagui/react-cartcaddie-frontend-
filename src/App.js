@@ -6,10 +6,10 @@ import {
   Route, Switch
 } from 'react-router-dom';
 import Home from "./Components/Home.js";
-import CartItem from "./Components/CartItem.js";
+import CartItems from "./Containers/CartItems.js";
 import Login from "./Components/Login.js";
 import ItemContainer from "./Containers/ItemContainer";
-import GolfCourses from "./Components/GolfCourse.js"; 
+import GolfCourseContainer from "./Containers/GolfCourseContainer"; 
 import Header from "./Components/Header.js";
 import NavBar from "./Containers/NavBar.js";
 
@@ -46,13 +46,35 @@ export default class App extends Component {
    })
   }
 
+  addItemToCartClickHandler = (cartItemObj) =>{
+    console.log("adding", cartItemObj )
+    fetch("http://localhost:3000/api/v1/cart_items", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+
+        item_id: cartItemObj.id, 
+        cart_id: 1,
+        quantity: 1,
+
+      })
+    })
+    .then(resp=>resp.json())
+    .then(cartItemObj=>
+      this.setState(()=>({cartItems: [...this.state.cartItems, cartItemObj]})))
+
+  }
+
 
 
   render() {
     
-     console.log(this.state.items)
-     console.log(this.state.cartItems)
-     console.log(this.state.golfCourses)
+    //  console.log(this.state.items)
+    //  console.log(this.state.cartItems)
+    //  console.log(this.state.golfCourses)
 
     
     return (
@@ -63,10 +85,10 @@ export default class App extends Component {
           <NavBar/>
           
           <Route  path="/" component={Home} />
-          <Route  path="/cart_items" render={()=> <CartItem cartItems ={this.state.cartItems}/>}  />
+          <Route  path="/cart_items" render={()=> <CartItems cartItems ={this.state.cartItems} clickHandler={this.addToCart}/>}  />
           <Route  path="/login" component={Login} />
-          <Route  path="/items" render={()=> <ItemContainer items={this.state.items}/>} />
-          <Route  path="/golf_courses" render={()=> <GolfCourses golfCourses={this.state.golfCourses}/>} />  
+          <Route  path="/items" render={()=> <ItemContainer items={this.state.items} addItemToCartClickHandler={this.addItemToCartClickHandler}/>} />
+          <Route  path="/golf_courses" render={()=> <GolfCourseContainer golfCourses={this.state.golfCourses}/>} />  
           
         </div>
     </Router>

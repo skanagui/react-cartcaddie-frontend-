@@ -4,9 +4,10 @@ export default class GolfCourse extends Component {
 
     
     render() {
+        console.log(this.props)
         return (
             <div>
-                 {this.props.golfCourses.name}
+                {this.props.golfCourses.name}
             </div>
         )
     }

@@ -4,7 +4,7 @@ import Item from "../Components/Item";
 export default class ItemContainer extends Component {
 
     renderItems = () => {
-        return this.props.items.map(itemObj => <Item items = {itemObj} key ={itemObj.id}/>);
+        return this.props.items.map(itemObj => <Item addItemToCartClickHandler ={this.props.addItemToCartClickHandler} items = {itemObj} key ={itemObj.id}/>);
     }
 
     render() {

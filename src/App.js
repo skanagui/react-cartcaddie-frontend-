@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
-  Route, Switch
+  Route
 } from 'react-router-dom';
 import Home from "./Components/Home.js";
 import CartItems from "./Containers/CartItems.js";

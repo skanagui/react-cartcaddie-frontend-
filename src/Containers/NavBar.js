@@ -9,7 +9,7 @@ export default class NavBar extends Component {
     render() {
         return (
             <div>
-                <menu horizontal className= "navbar" >
+                <menu  className= "navbar" >
                 <Menu.Item as={NavLink} to="/" exact>
                     Home 
                 </Menu.Item>

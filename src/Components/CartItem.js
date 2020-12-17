@@ -6,10 +6,9 @@ export default class CartItem extends Component {
         clicked: false
     }
 
-    localClickHandler = () => {
+    localRemoveItemHandler = () => {
 
-        
-
+        this.props.removeItemFromCart(this.props.cartItem)
 
     }
 
@@ -23,10 +22,11 @@ export default class CartItem extends Component {
 
                 Cart Items 
                 
-                <h2 >{this.props.cartItem.item.name}</h2> send click to app
+                <h2 >{this.props.cartItem.item.name}</h2> 
                 <h3>{this.props.cartItem.item.price}</h3>
                 <img alt ="item" src={this.props.cartItem.item.image}/>
                 <p>{this.props.cartItem.item.description}</p>
+                <button type ="button" class="btn btn-danger" onclick={e=> this.localRemoveItemHandler}>Remove From Cart</button>
             </div>
         )
     }

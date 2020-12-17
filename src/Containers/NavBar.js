@@ -22,7 +22,7 @@ export default class NavBar extends Component {
                 <Menu.Item as={NavLink} to="/items" exact>
                     Items
                 </Menu.Item>
-                <Menu.Item as={NavLink} to="/logout" exact>
+                <Menu.Item as={NavLink} to="/login" exact>
                     Login
                 </Menu.Item>
                 </menu>

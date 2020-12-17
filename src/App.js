@@ -68,6 +68,22 @@ export default class App extends Component {
 
   }
 
+  removeItemFromCart = (item) => {
+    console.log("Removing From Cart", item.id)
+    fetch(`http://localhost:3000/api/v1/cart_items/${item.id}`, {
+      method: "DELETE"
+
+    })
+    .then(resp => resp.json())
+    .then(()=> {
+      let copyItemsArray = [...this.state.cartItems]
+      let newList = copyItemsArray.filter(i => i.id !== item.id)
+      this.setState({cartItems: newList})
+    })
+    .catch(console.log)
+    
+  }
+
 
 
   render() {
@@ -85,7 +101,7 @@ export default class App extends Component {
           <NavBar/>
           
           <Route  path="/" component={Home} />
-          <Route  path="/cart_items" render={()=> <CartItems cartItems ={this.state.cartItems} clickHandler={this.addToCart}/>}  />
+          <Route  path="/cart_items" render={()=> <CartItems cartItems ={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} />}  />
           <Route  path="/login" component={Login} />
           <Route  path="/items" render={()=> <ItemContainer items={this.state.items} addItemToCartClickHandler={this.addItemToCartClickHandler}/>} />
           <Route  path="/golf_courses" render={()=> <GolfCourseContainer golfCourses={this.state.golfCourses}/>} />  

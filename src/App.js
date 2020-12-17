@@ -77,7 +77,7 @@ export default class App extends Component {
     .then(resp => resp.json())
     .then(()=> {
       let copyItemsArray = [...this.state.cartItems]
-      let newList = copyItemsArray.filter(i => i.id !== item.id)
+      let newList = copyItemsArray.filter(itemObj => itemObj.id !== item.id)
       this.setState({cartItems: newList})
     })
     .catch(console.log)

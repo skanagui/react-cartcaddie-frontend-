@@ -1,5 +1,4 @@
 
-
 import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
@@ -12,7 +11,8 @@ import ItemContainer from "./Containers/ItemContainer";
 import GolfCourseContainer from "./Containers/GolfCourseContainer"; 
 import Header from "./Components/Header.js";
 import NavBar from "./Containers/NavBar.js";
-import UserProfileContainer from './Containers/UserProfileContainer'
+import UserProfileContainer from './Containers/UserProfileContainer';
+import ReviewsContainer from './Containers/ReviewsContainer'
 
 
 
@@ -23,7 +23,13 @@ export default class App extends Component {
     golfCourses: [],
     items: [],
     user: [],
-    cartItems: []
+    cartItems: [],
+    reviews: [],
+    newReview: {
+      title: '',
+      body: '',
+      date: '',
+    }
   }
 
   componentDidMount() {
@@ -31,20 +37,19 @@ export default class App extends Component {
     fetch("http://localhost:3000/api/v1/items"),
     fetch("http://localhost:3000/api/v1/cart_items"),
     fetch("http://localhost:3000/api/v1/golf_courses"),
-    fetch("http://localhost:3000/api/v1/users")])
+    fetch("http://localhost:3000/api/v1/users"),
+    fetch("http://localhost:3000/api/v1/reviews")])
     
-    .then(([res1, res2, res3, res4]) => {
-       return Promise.all([res1.json(), res2.json(), res3.json(), res4.json()]) 
+    .then(([res1, res2, res3, res4, res5]) => {
+       return Promise.all([res1.json(), res2.json(), res3.json(), res4.json(), res5.json()]) 
   })
-   .then(([data1, data2, data3, data4]) =>{
+   .then(([data1, data2, data3, data4, data5]) =>{
      this.setState({
        items:data1,
        cartItems:data2,
        golfCourses:data3,
-       user:data4
-
-
-
+       user:data4,
+       reviews:data5
      })
    })
   }
@@ -95,6 +100,7 @@ export default class App extends Component {
     //  console.log(this.state.cartItems)
    console.log(this.state.golfCourses)
     console.log(this.state.user)
+    console.log(this.state.reviews)
 
     
     return (
@@ -109,6 +115,7 @@ export default class App extends Component {
           <Route  path="/items" render={()=> <ItemContainer items={this.state.items} addItemToCartClickHandler={this.addItemToCartClickHandler}/>} />
           <Route  path="/golf_courses" render={()=> <GolfCourseContainer golfCourses={this.state.golfCourses}/>} />  
           <Route  path="/userprofile" render={() => <UserProfileContainer user={this.state.user}/>} />
+          <Route  path="/reviews" render={() => <ReviewsContainer reviews={this.state.reviews}/>}/>
         </div>
     </Router>
     )

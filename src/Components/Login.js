@@ -1,12 +1,17 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
+import {
+    BrowserRouter as Router,
+    Route
+  } from 'react-router-dom';
+
 
 
 class Login extends React.Component{
 
 
     state= {
-        username: '',
+        email_address: '',
         password_digest: ''
     }
 
@@ -22,9 +27,9 @@ class Login extends React.Component{
         return(
             <div className="form">
                 <form >
-                <input name="username" type="text" placeholder="username" value={this.state.username} onChange={this.changeHandler} />
+                <input name="email_address" type="text" placeholder="email address" value={this.state.username} onChange={this.changeHandler} />
                 <input name="password_digest" type="password" placeholder="password" value={this.state.password_digest} onChange={this.changeHandler} />
-                <NavLink to={`/`} >
+                <NavLink to={`/userprofile`} >
                     <button type="submit">Log In</button>
                 </NavLink>
                 </form>

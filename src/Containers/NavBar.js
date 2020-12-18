@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import {
-  Menu, Dropdown
+  Menu
 } from "semantic-ui-react";
 
 
@@ -10,7 +10,10 @@ export default class NavBar extends Component {
         return (
             <div>
                 <menu  className= "navbar" >
-                <Menu.Item as={NavLink} to="/" exact>
+                <Menu.Item as={NavLink} to="/login" exact>
+                    Login
+                </Menu.Item>
+                <Menu.Item as={NavLink} to="/userprofile" exact>
                     Home 
                 </Menu.Item>
                 <Menu.Item as={NavLink} to="/cart_items" exact>
@@ -19,12 +22,10 @@ export default class NavBar extends Component {
                 <Menu.Item as={NavLink} to="/golf_courses" exact>
                     Golf Courses
                 </Menu.Item>
-                <Menu.Item as={NavLink} to="/items" exact>
-                    Items
+                <Menu.Item as={NavLink} to="/logout" exact>
+                    Logout
                 </Menu.Item>
-                <Menu.Item as={NavLink} to="/login" exact>
-                    Login
-                </Menu.Item>
+                
                 </menu>
 
 

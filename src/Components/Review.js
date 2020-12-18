@@ -7,6 +7,7 @@ export default class Review extends Component {
                 <h1>{this.props.review.title}</h1>
                 <p>{this.props.review.body}</p>
                 <h3>{this.props.review.date}</h3>
+                <button>Edit</button><button>Delete</button>
             </div>
         )
     }

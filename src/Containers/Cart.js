@@ -1,8 +1,9 @@
 
 import React, { Component } from 'react'
 import CartItem from "../Components/CartItem.js";
+import CheckOut from "../Components/CheckOut";
 
-export default class CartItems extends Component {
+export default class Cart extends Component {
     
     renderCartItems = () => {
         
@@ -15,6 +16,7 @@ export default class CartItems extends Component {
         return (
             <div className="cart-item-container" >
                 {this.renderCartItems()}
+                <CheckOut/>
             </div>
         );
     }

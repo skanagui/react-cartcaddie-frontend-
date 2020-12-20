@@ -16,7 +16,7 @@ export default class NavBar extends Component {
                 <Menu.Item as={NavLink} to="/userprofile" exact>
                     Home 
                 </Menu.Item>
-                <Menu.Item as={NavLink} to="/cart_items" exact>
+                <Menu.Item as={NavLink} to="/cart" exact>
                     Cart
                 </Menu.Item>
                 <Menu.Item as={NavLink} to="/golf_courses" exact>

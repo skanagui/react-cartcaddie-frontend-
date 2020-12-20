@@ -5,7 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import Home from "./Components/Home.js";
-import CartItems from "./Containers/CartItems.js";
+import Cart from "./Containers/Cart.js";
 import Login from "./Components/Login.js";
 import ItemContainer from "./Containers/ItemContainer";
 import GolfCourseContainer from "./Containers/GolfCourseContainer"; 
@@ -92,6 +92,40 @@ export default class App extends Component {
     
   }
 
+  reviewChangeHandler = (e) => {
+    this.setState({
+      newReview: {
+        ...this.state.newReview, [e.target.name]: e.target.value,
+      }
+    })
+  }
+
+  editSubmitHandler = (reviewObj) => {
+
+    fetch(`http://localhost:3000/api/v1/reviews/${reviewObj.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify({ 
+        title: reviewObj.title,
+        date: reviewObj.date,
+        body: reviewObj.body 
+       })
+    })
+    .then(resp => resp.json())
+    .then(newReview => {
+      let copiedArray = [...this.state.reviews]
+      let idx = copiedArray.findIndex(review => review.id === newReview.id)
+      copiedArray[idx] = newReview;
+      this.setState({ reviews: copiedArray });
+      console.log(newReview)
+    })
+    .catch(console.log)
+  };
+
+
 
 
   render() {
@@ -111,11 +145,11 @@ export default class App extends Component {
           <NavBar/>
           <Route  path="/login" component={Login} />
           <Route  path="/" component={Home} />
-          <Route  path="/cart_items" render={()=> <CartItems cartItems ={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} />}  />
+          <Route  path="/cart" render={()=> <Cart cartItems ={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} />}  />
           <Route  path="/items" render={()=> <ItemContainer items={this.state.items} addItemToCartClickHandler={this.addItemToCartClickHandler}/>} />
           <Route  path="/golf_courses" render={()=> <GolfCourseContainer golfCourses={this.state.golfCourses}/>} />  
           <Route  path="/userprofile" render={() => <UserProfileContainer user={this.state.user}/>} />
-          <Route  path="/reviews" render={() => <ReviewsContainer reviews={this.state.reviews}/>}/>
+          <Route  path="/reviews" render={() => <ReviewsContainer reviews={this.state.reviews} reviewChangeHandler={this.reviewChangeHandler} editSubmitHandler={this.editSubmitHandler}/>}/>
         </div>
     </Router>
     )

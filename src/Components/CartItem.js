@@ -24,7 +24,8 @@ export default class CartItem extends Component {
                 <h3>${this.props.cartItem.item.price}.00</h3>
                 <h3>QTY:{this.props.cartItem.quantity}</h3>
                 <p>{this.props.cartItem.item.description}</p>
-                <button type ="button" class="btn btn-danger" onClick={this.localRemoveItemHandler}>Remove From Cart</button>
+                <button type ="button" className="btn btn-danger" onClick={this.localRemoveItemHandler}>Remove From Cart</button>
+                <button>Checkout</button>
             </div>
         )
     }

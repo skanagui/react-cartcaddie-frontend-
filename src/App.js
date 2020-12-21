@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
-  Route
+  Route, withRouter
 } from 'react-router-dom';
 import Home from "./Components/Home.js";
 import Cart from "./Containers/Cart.js";
@@ -17,13 +17,14 @@ import ReviewsContainer from './Containers/ReviewsContainer'
 
 
 
-export default class App extends Component {
+class App extends Component {
 
   state = {
     golfCourses: [],
     items: [],
     user: [],
     cartItems: [],
+    current_cart: [],
     reviews: [],
     newReview: {
       title: '',
@@ -38,21 +39,29 @@ export default class App extends Component {
     fetch("http://localhost:3000/api/v1/cart_items"),
     fetch("http://localhost:3000/api/v1/golf_courses"),
     fetch("http://localhost:3000/api/v1/users"),
-    fetch("http://localhost:3000/api/v1/reviews")])
+    fetch("http://localhost:3000/api/v1/reviews"),
+    fetch("http://localhost:3000/api/v1/users")])
     
-    .then(([res1, res2, res3, res4, res5]) => {
-       return Promise.all([res1.json(), res2.json(), res3.json(), res4.json(), res5.json()]) 
+    .then(([res1, res2, res3, res4, res5, res6]) => {
+       return Promise.all([res1.json(), res2.json(), res3.json(), res4.json(), res5.json(), res6.json()]) 
   })
-   .then(([data1, data2, data3, data4, data5]) =>{
+   .then(([data1, data2, data3, data4, data5, data6]) =>{
+
+    let current_cart = data6[0].carts.filter(cart=>cart.check_out === false)
+    console.log(data2)
+    let cartItems = data2.filter(cart=>cart.id === current_cart.id)
      this.setState({
        items:data1,
-       cartItems:data2,
+       cartItems:cartItems,
        golfCourses:data3,
        user:data4,
-       reviews:data5
+       reviews:data5,
+       current_cart: current_cart[0]
      })
    })
   }
+
+  
 
   addItemToCartClickHandler = (cartItemObj) =>{
     console.log("adding", cartItemObj )
@@ -65,7 +74,7 @@ export default class App extends Component {
       body: JSON.stringify({
 
         item_id: cartItemObj.id, 
-        cart_id: 1,
+        cart_id: this.state.current_cart.id,
         quantity: 1,
 
       })
@@ -126,32 +135,85 @@ export default class App extends Component {
   };
 
 
+/////////
+
+handleCheckout = () => {
+    Promise.all([
+      fetch('http://localhost:3000/api/v1/carts',{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          user_id: 1,
+          total_price: 0,
+          check_out: false
+
+        })
+      })
+      ,
+      fetch(`http://localhost:3000/api/v1/carts/${this.state.current_cart.id}`,{
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          check_out: true
+        })
+      })
+    ])
+    .then(([resp1, resp2]) => {
+      return Promise.all([resp1.json(), resp2.json()])
+    })
+    .then(([data1, data2]) => {
+      console.log(data1, data2)
+      this.setState({
+        current_cart: data1.cart_items
+      })
+       this.props.history.push("/")
+
+      })
+    }
+
+
+//////
+
+
+
+
+
+
+
 
 
   render() {
     
-    //  console.log(this.state.items)
+    console.log(this.state)
     //  console.log(this.state.cartItems)
-   console.log(this.state.golfCourses)
-    console.log(this.state.user)
-    console.log(this.state.reviews)
+  //  console.log(this.state.golfCourses)
+  //   console.log(this.state.user)
+  //   console.log(this.state.reviews)
+    console.log(this.state.current_cart)
 
     
     return (
-      <Router>
-       <div className="App">
+      
+        <div className="App">
           
           <Header/>
           <NavBar/>
           <Route  path="/login" component={Login} />
           <Route  path="/" component={Home} />
-          <Route  path="/cart" render={()=> <Cart cartItems ={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} />}  />
+          <Route  path="/cart" render={()=> <Cart handleCheckout={this.handleCheckout} cartItems ={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} />}  />
           <Route  path="/items" render={()=> <ItemContainer items={this.state.items} addItemToCartClickHandler={this.addItemToCartClickHandler}/>} />
           <Route  path="/golf_courses" render={()=> <GolfCourseContainer golfCourses={this.state.golfCourses}/>} />  
           <Route  path="/userprofile" render={() => <UserProfileContainer user={this.state.user}/>} />
           <Route  path="/reviews" render={() => <ReviewsContainer reviews={this.state.reviews} reviewChangeHandler={this.reviewChangeHandler} editSubmitHandler={this.editSubmitHandler}/>}/>
         </div>
-    </Router>
+     
     )
   }
 }
+export default withRouter(App);

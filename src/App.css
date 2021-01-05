@@ -1,31 +1,24 @@
 
 
-
-
-.App-link {
-  color: #1b5815;
+.App{
+  text-align: center;
+  background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://www.golfdigest.com/content/dam/images/golfdigest/fullset/2018/07/10/5b45326bca4a3c573b0b592a_Trump-Golf-Links-at-Ferry-Point.jpg");
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover; 
+  background-position: center; 
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-/* .navbar {
+.navbar {
   color: #37b62c;
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-} */
+}
 
 
 
@@ -36,11 +29,9 @@
   text-align: center;
 } */
 
-.card::after{
-  opacity: 0.2;
-}
 
-.column{
+
+/* .column{
   height: auto;
   max-height: 350px;
   width: auto;
@@ -54,6 +45,8 @@
   max-width: 350px;
 }
 
+
+ */
 
 
 

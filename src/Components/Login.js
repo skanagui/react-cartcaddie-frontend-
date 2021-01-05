@@ -5,6 +5,7 @@ import {
     Route
   } from 'react-router-dom';
   import '../Styles/Login.css'
+import {Button} from 'semantic-ui-react'
 
 
 
@@ -31,7 +32,7 @@ class Login extends React.Component{
                 <input name="email_address" type="text" placeholder="email address" value={this.state.username} onChange={this.changeHandler} />
                 <input name="password_digest" type="password" placeholder="password" value={this.state.password_digest} onChange={this.changeHandler} />
                 <NavLink to={`/userprofile`} >
-                    <button type="submit">Log In</button>
+                    <button class="ui active button" type="submit"> <i class="user icon"></i>Log In</button>
                 </NavLink>
                 </form>
             </div>

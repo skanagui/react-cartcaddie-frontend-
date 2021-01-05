@@ -14,10 +14,11 @@ export default class GolfCourseContainer extends Component {
         return (
 
                 
-            <div className="golf-course-container" >
+            <Card.Group itemsPerRow={3} >
                 <h2><NycCoursesHeader></NycCoursesHeader></h2>
-                <Card.Group itemsPerRow={3}>{this.renderGolfCourses()}</Card.Group>
-            </div>
+                <br></br>
+                {this.renderGolfCourses()}
+            </Card.Group>
         );
     }
 }

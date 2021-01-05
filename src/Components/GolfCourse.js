@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
-import NycCoursesHeader from '../Components/NycCoursesHeader'
+import { NavLink } from 'react-router-dom';
+import { Card } from 'semantic-ui-react';
+import  "../Styles/CourseCard.css"
 
 export default class GolfCourse extends Component {
 
@@ -9,18 +10,34 @@ export default class GolfCourse extends Component {
         console.log(this.props)
         return (
 
-            <div class="ui four column doubling stackable grid container" >
-            <NavLink to="/items">
-                <div class="column">
-                <h3>{this.props.golfCourses.name}</h3>
-                {/* {this.props.golfCourses.address} */}
-                <img  class="ui medium bordered image" src="/images/wireframe/white-image.png"alt="course-image" src={this.props.golfCourses.image}></img>
-                    
-                </div>
-            </NavLink>
-            </div>
+           <NavLink to="/items">
 
-               
+            <Card className="card">
+                <div >
+                    <div >
+                        <div class="image">
+                          <img  alt="course-image" src={this.props.golfCourses.image}></img>
+                         </div>
+                         <div class="content">
+                             <a class="header">{this.props.golfCourses.name}</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </Card>
+
+
+            
+
+
+            
+                
+            </NavLink>
+          
+
+                //  class="ui medium bordered image" src="/images/wireframe/white-image.png"
 
             )
     }

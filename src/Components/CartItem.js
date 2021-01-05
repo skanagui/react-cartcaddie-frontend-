@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Card, Div} from 'semantic-ui-react'
 
 export default class CartItem extends Component {
 
@@ -16,10 +17,10 @@ export default class CartItem extends Component {
     render() {
           console.log(this.props.cartItem)
         return (
-            <div className = "card" >
+            <div >
 
                 
-                <img class="ui medium bordered image" src="/images/wireframe/white-image.png"  alt ="item" src={this.props.cartItem.item.image}/>
+                <img  alt ="item" src={this.props.cartItem.item.image}/>
                 <h2 >{this.props.cartItem.item.name}</h2> 
                 <h3>${this.props.cartItem.item.price}.00</h3>
                 <h3>QTY:{this.props.cartItem.quantity}</h3>

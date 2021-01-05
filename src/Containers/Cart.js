@@ -62,7 +62,7 @@ export default class Cart extends Component {
                 <div>
                      <form onSubmit={this.handleCheckout}>
                             
-                        <button className="button primary" type="submit">
+                        <button className="button primary" type="submit"><i class="golf ball icon"></i>
                                 Checkout
                         </button>
                             

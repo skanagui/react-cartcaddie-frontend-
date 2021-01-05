@@ -21,7 +21,7 @@ export default class Review extends Component {
 
     render() {
         return (
-            <div>
+            <div class="card" style={{backgroundColor: 'rgba(0,0,0,0.2)', color:'white', marginTop: '50px'}}>
                 {this.state.edit ?
                   <EditReviewForm review={this.props.review} changeHandler ={this.props.changeHandler} editSubmitHandler={this.props.editSubmitHandler} editClickHandler={this.editClickHandler}/> 
                 :
@@ -29,7 +29,7 @@ export default class Review extends Component {
                     <h1>{this.props.review.title}</h1>
                     <p>{this.props.review.body}</p>
                     <h3>{this.props.review.date}</h3>
-                    <button onClick={this.editClickHandler}>Edit</button><button >Delete</button>
+                    <button >Delete</button>  {/*<button onClick={this.editClickHandler}>Edit</button>*/}
                 </div>
             }
 

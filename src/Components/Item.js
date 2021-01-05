@@ -17,7 +17,7 @@ export default class Item extends Component {
             <div >
 
                 <h2>{this.props.items.name}</h2>
-                <img alt="item" src={this.props.items.image}></img>
+                <img class="ui medium bordered image" src="/images/wireframe/white-image.png" alt="item" src={this.props.items.image}></img>
                 <h3>${this.props.items.price}</h3>
                 <div>{this.props.items.description}</div>
                 <button onClick={this.addItemToCartHandler}>Add Item</button>

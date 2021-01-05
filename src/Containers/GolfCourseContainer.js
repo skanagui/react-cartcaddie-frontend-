@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import GolfCourse from "../Components/GolfCourse"
+import NycCoursesHeader from '../Components/NycCoursesHeader';
+import { Card} from "semantic-ui-react"
 
 export default class GolfCourseContainer extends Component {
     renderGolfCourses = () => {
@@ -10,8 +12,11 @@ export default class GolfCourseContainer extends Component {
 
     render() {
         return (
+
+                
             <div className="golf-course-container" >
-                {this.renderGolfCourses()}
+                <h2><NycCoursesHeader></NycCoursesHeader></h2>
+                <Card.Group itemsPerRow={3}>{this.renderGolfCourses()}</Card.Group>
             </div>
         );
     }

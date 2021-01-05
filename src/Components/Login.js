@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router,
     Route
   } from 'react-router-dom';
+  import '../Styles/Login.css'
 
 
 
@@ -25,8 +26,8 @@ class Login extends React.Component{
         console.log(this.state)
 
         return(
-            <div className="form">
-                <form >
+            <div className="login">
+                <form class="card" >
                 <input name="email_address" type="text" placeholder="email address" value={this.state.username} onChange={this.changeHandler} />
                 <input name="password_digest" type="password" placeholder="password" value={this.state.password_digest} onChange={this.changeHandler} />
                 <NavLink to={`/userprofile`} >

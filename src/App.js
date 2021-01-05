@@ -12,7 +12,10 @@ import GolfCourseContainer from "./Containers/GolfCourseContainer";
 import Header from "./Components/Header.js";
 import NavBar from "./Containers/NavBar.js";
 import UserProfileContainer from './Containers/UserProfileContainer';
-import ReviewsContainer from './Containers/ReviewsContainer'
+import ReviewsContainer from './Containers/ReviewsContainer';
+import LogOut from './Components/LogOut';
+import './App.css';
+import Vanny from './Components/Vanny';
 
 
 
@@ -48,7 +51,7 @@ class App extends Component {
    .then(([data1, data2, data3, data4, data5, data6]) =>{
 
     let current_cart = data6[0].carts.filter(cart=>cart.check_out === false)
-    console.log(data2)
+    console.log(current_cart[0])
     let cartItems = data2.filter(cart=>cart.id === current_cart.id)
      this.setState({
        items:data1,
@@ -167,35 +170,45 @@ handleCheckout = () => {
     .then(([resp1, resp2]) => {
       return Promise.all([resp1.json(), resp2.json()])
     })
+    
     .then(([data1, data2]) => {
       console.log(data1, data2)
       this.setState({
-        current_cart: data1.cart_items
+        current_cart: data1.items, //cart_item,
+        cartItems: []
+
+        
       })
+      
+      
+      console.log(data1)
        this.props.history.push("/")
+  
+      //  this.setState({
+      //    current_cart: data1.cart_item
+      //  })
 
       })
+
+      function myFunction() {
+        alert("Hello! I am an alert box!");
+      }
+
+     
+
+
+
     }
-
-
-//////
-
-
-
-
-
-
-
 
 
   render() {
     
-    console.log(this.state)
+    //console.log(this.state)
     //  console.log(this.state.cartItems)
   //  console.log(this.state.golfCourses)
   //   console.log(this.state.user)
   //   console.log(this.state.reviews)
-    console.log(this.state.current_cart)
+    //console.log(this.state.current_cart)
 
     
     return (
@@ -204,13 +217,15 @@ handleCheckout = () => {
           
           <Header/>
           <NavBar/>
-          <Route  path="/login" component={Login} />
-          <Route  path="/" component={Home} />
-          <Route  path="/cart" render={()=> <Cart handleCheckout={this.handleCheckout} cartItems ={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} />}  />
-          <Route  path="/items" render={()=> <ItemContainer items={this.state.items} addItemToCartClickHandler={this.addItemToCartClickHandler}/>} />
-          <Route  path="/golf_courses" render={()=> <GolfCourseContainer golfCourses={this.state.golfCourses}/>} />  
-          <Route  path="/userprofile" render={() => <UserProfileContainer user={this.state.user}/>} />
-          <Route  path="/reviews" render={() => <ReviewsContainer reviews={this.state.reviews} reviewChangeHandler={this.reviewChangeHandler} editSubmitHandler={this.editSubmitHandler}/>}/>
+          <Route path="/login" component={Login} />
+          <Route path="/" component={Home} />
+          <Route path="/cart" render={()=> <Cart handleCheckout={this.handleCheckout} cartItems ={this.state.cartItems} removeItemFromCart={this.removeItemFromCart} />}  />
+          <Route path="/items" render={()=> <ItemContainer items={this.state.items} addItemToCartClickHandler={this.addItemToCartClickHandler}/>} />
+          <Route path="/golf_courses" render={()=> <GolfCourseContainer golfCourses={this.state.golfCourses}/>} />  
+          <Route path="/userprofile" render={() => <UserProfileContainer user={this.state.user}/>} />
+          <Route path="/reviews" render={() => <ReviewsContainer reviews={this.state.reviews} reviewChangeHandler={this.reviewChangeHandler} editSubmitHandler={this.editSubmitHandler}/>}/>
+          <Route path="/logout" component={LogOut}/>
+          <Route path="/van_cortlandt_golf_course" component={Vanny} />
         </div>
      
     )

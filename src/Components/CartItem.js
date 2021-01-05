@@ -19,7 +19,7 @@ export default class CartItem extends Component {
             <div className = "card" >
 
                 
-                <img alt ="item" src={this.props.cartItem.item.image}/>
+                <img class="ui medium bordered image" src="/images/wireframe/white-image.png"  alt ="item" src={this.props.cartItem.item.image}/>
                 <h2 >{this.props.cartItem.item.name}</h2> 
                 <h3>${this.props.cartItem.item.price}.00</h3>
                 <h3>QTY:{this.props.cartItem.quantity}</h3>

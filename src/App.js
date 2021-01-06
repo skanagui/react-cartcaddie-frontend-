@@ -16,6 +16,7 @@ import ReviewsContainer from './Containers/ReviewsContainer';
 import LogOut from './Components/LogOut';
 import './App.css';
 import Vanny from './Components/Vanny';
+import "semantic-ui-css/semantic.min.css";
 
 
 
@@ -52,7 +53,9 @@ class App extends Component {
 
     let current_cart = data6[0].carts.filter(cart=>cart.check_out === false)
     console.log(current_cart[0])
-    let cartItems = data2.filter(cart=>cart.id === current_cart.id)
+    let cartItems = data2.filter(element=>element.cart.id === current_cart[0].id)
+    console.log("Current Cart", current_cart)
+    console.log("This is the console", data2)
      this.setState({
        items:data1,
        cartItems:cartItems,
@@ -67,7 +70,6 @@ class App extends Component {
   
 
   addItemToCartClickHandler = (cartItemObj) =>{
-    console.log("adding", cartItemObj )
     fetch("http://localhost:3000/api/v1/cart_items", {
       method: "POST",
       headers: {
@@ -75,16 +77,19 @@ class App extends Component {
         "Accept": "application/json"
       },
       body: JSON.stringify({
-
+        
         item_id: cartItemObj.id, 
         cart_id: this.state.current_cart.id,
         quantity: 1,
-
+        
       })
     })
     .then(resp=>resp.json())
-    .then(cartItemObj=>
-      this.setState(()=>({cartItems: [...this.state.cartItems, cartItemObj]})))
+    .then(cartItemObj=>{
+
+      console.log("adding", cartItemObj )
+      this.setState(()=>({cartItems: [...this.state.cartItems, cartItemObj]}))
+    })
 
   }
 
@@ -175,7 +180,7 @@ handleCheckout = () => {
       console.log(data1, data2)
       this.setState({
         current_cart: data1.items, //cart_item,
-        cartItems: []
+        // cartItems: []
 
         
       })
@@ -190,10 +195,7 @@ handleCheckout = () => {
 
       })
 
-      function myFunction() {
-        alert("Hello! I am an alert box!");
-      }
-
+     
      
 
 
@@ -210,10 +212,10 @@ handleCheckout = () => {
   //   console.log(this.state.reviews)
     //console.log(this.state.current_cart)
 
-    
+    console.log("array were looking for", this.state.cartItems)
     return (
       
-        <div className="App">
+        <div className="App" >
           
           <Header/>
           <NavBar/>

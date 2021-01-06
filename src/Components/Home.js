@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 export default class Home extends Component {
     render() {
         return (
-            <div class="card" style={{backgroundColor: 'rgba(0,0,0,0.2)', color:'white'}} >
+            <div className="card" style={{backgroundColor: 'rgba(0,0,0,0.2)', color:'white'}} >
                   
             </div>
         )

@@ -46,18 +46,26 @@ export default class Cart extends Component {
 
 
     renderCartItems = () => {
+        // console.log(this.props.cartItems[0].price)
+        return this.props.cartItems.map(cartItemObj => <CartItem removeItemFromCart={this.props.removeItemFromCart} cartItem = {cartItemObj} key ={cartItemObj.id}/>);
         
-        const cartItem= this.props.cartItems.map(cartItemObj => <CartItem removeItemFromCart={this.props.removeItemFromCart} cartItem = {cartItemObj} key ={cartItemObj.id}/>);
-        return cartItem
     }
 
     render() {
+        
         console.log(this.props.cartItems)
         return (
-            <div className = "cart-item-container">
+
+            <>
+            {this.props.cartItems.length ? <div className = "cart-item-container">
                 <h1>Cart Items</h1>
                 
                 {this.renderCartItems()}
+
+                <h1>total:$ {this.props.cartItems.reduce((a,b)=>a+(b.item.price), 0)}  </h1>
+
+                
+
 
                 <div>
                      <form onSubmit={this.handleCheckout}>
@@ -68,7 +76,9 @@ export default class Cart extends Component {
                             
                     </form>
                 </div>
-            </div>
+            </div> : <h2>Loading</h2> }
+            
+            </>
         );
     }
 }

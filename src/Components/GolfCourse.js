@@ -1,44 +1,26 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
-import { Card } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 import  "../Styles/CourseCard.css"
 
 export default class GolfCourse extends Component {
 
-    
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
 
            <NavLink to="/items">
-
-            <Card className="card">
-                <div >
-                    <div >
-                        <div class="image">
-                          <img  alt="course-image" src={this.props.golfCourses.image}></img>
-                         </div>
-                         <div class="content">
-                             <a class="header">{this.props.golfCourses.name}</a>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </Card>
-
-
-            
-
-
-            
-                
+                <Card className="card">
+                    <Card.Content>
+                        <Card.Header>
+                        {this.props.golfCourses.name}
+                        </Card.Header>
+                        <Image fluid centered medium src={this.props.golfCourses.image}/>
+                        {/* <img src={this.props.golfCourses.image} height={300}></img> */}
+                    </Card.Content>
+                </Card>
             </NavLink>
-          
 
-                //  class="ui medium bordered image" src="/images/wireframe/white-image.png"
-
-            )
+        )
     }
 }

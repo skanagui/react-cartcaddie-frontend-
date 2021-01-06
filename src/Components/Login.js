@@ -28,7 +28,7 @@ class Login extends React.Component{
 
         return(
             <div className="login">
-                <form class="card" >
+                <form >
                 <input name="email_address" type="text" placeholder="email address" value={this.state.username} onChange={this.changeHandler} />
                 <input name="password_digest" type="password" placeholder="password" value={this.state.password_digest} onChange={this.changeHandler} />
                 <NavLink to={`/userprofile`} >

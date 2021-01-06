@@ -19,7 +19,7 @@ export default class Item extends Component {
         return (
 
             
-            <div >
+            <div className="card" >
 
                 <h2>{this.props.items.name}</h2>
                 <img alt="item" src={this.props.items.image}></img>

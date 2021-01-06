@@ -62,7 +62,7 @@ export default class Cart extends Component {
                 
                 {this.renderCartItems()}
 
-                <h1>total:$ {this.props.cartItems.reduce((a,b)=>a+(b.item.price), 0)}  </h1>
+                <h1>Cart Total:$ {this.props.cartItems.reduce((a,b)=>a+(b.item.price), 0)}  </h1>
 
                 
 
@@ -70,13 +70,13 @@ export default class Cart extends Component {
                 <div>
                      <form onSubmit={this.handleCheckout}>
                             
-                        <button className="button primary" type="submit"><i class="golf ball icon"></i>
+                        <button width="100" height="100"className="button primary" type="submit"><i class="golf ball icon"></i>
                                 Checkout
                         </button>
                             
                     </form>
                 </div>
-            </div> : <h2>Loading</h2> }
+            </div> : <div><div class="ui segment"><div class="ui active transition visible inverted dimmer"><div class="content"><div class="ui inverted text loader">Loading Cart</div></div></div><img src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" class="ui image"/></div></div>   }
             
             </>
         );

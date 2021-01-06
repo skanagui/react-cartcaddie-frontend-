@@ -13,21 +13,16 @@
 
 
 .navbar {
-  color: #37b62c;
+
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  
 }
  
 
 
-/* .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); this adds the "card" effect 
-  padding: 50px;
-  margin: 100px;
-  text-align: center;
-} */
+
 
 
 

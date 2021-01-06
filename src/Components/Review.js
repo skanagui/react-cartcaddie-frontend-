@@ -21,7 +21,7 @@ export default class Review extends Component {
 
     render() {
         return (
-            <div class="card" style={{backgroundColor: 'rgba(0,0,0,0.2)', color:'white', marginTop: '50px'}}>
+            <div >
                 {this.state.edit ?
                   <EditReviewForm review={this.props.review} changeHandler ={this.props.changeHandler} editSubmitHandler={this.props.editSubmitHandler} editClickHandler={this.editClickHandler}/> 
                 :

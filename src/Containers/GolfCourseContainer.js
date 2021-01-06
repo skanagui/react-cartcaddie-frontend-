@@ -15,7 +15,7 @@ export default class GolfCourseContainer extends Component {
         return (
                 
             // <h2><NycCoursesHeader></NycCoursesHeader></h2>
-            <Card.Group class="container" itemsPerRow={2}>{this.renderGolfCourses()}</Card.Group>
+            <Card.Group class="container" itemsPerRow={3}>{this.renderGolfCourses()}</Card.Group>
                 
              
         );

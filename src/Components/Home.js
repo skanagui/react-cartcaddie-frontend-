@@ -4,8 +4,8 @@ import React, { Component } from 'react'
 export default class Home extends Component {
     render() {
         return (
-            <div className="card" style={{backgroundColor: 'rgba(0,0,0,0.2)', color:'white'}} >
-                  
+            <div  >
+                  {/* <div class="ui message"><div class="header">Thank You!</div><p>Your purchased items will be included in your cart and you're good to get the links!.</p></div> */}
             </div>
         )
     }

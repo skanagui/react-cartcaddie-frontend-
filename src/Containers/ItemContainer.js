@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Item from "../Components/Item";
+import { Grid, Card } from 'semantic-ui-react'
 
 export default class ItemContainer extends Component {
 
@@ -9,9 +10,11 @@ export default class ItemContainer extends Component {
 
     render() {
         return (
-            <div className="item-container" >
-                {this.renderItems()}
-            </div>
-        );
+
+                <Grid columns={3} container relaxed>
+                        {this.renderItems()}
+                </Grid>
+
+            );
     }
 }

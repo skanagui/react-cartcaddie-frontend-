@@ -14,11 +14,12 @@ export default class GolfCourseContainer extends Component {
     render() {
         return (
                 <>
-             <h2><NycCoursesHeader></NycCoursesHeader></h2>
+             <h2><NycCoursesHeader centered></NycCoursesHeader></h2>
              <br></br>
             {/* <Card.Group class="container" itemsPerRow={3}>
             </Card.Group> */}
-            <Grid columns={3} container relaxed>
+            <Grid centered columns={4} container relaxed>
+                
                {this.renderGolfCourses()} 
             </Grid>
                 

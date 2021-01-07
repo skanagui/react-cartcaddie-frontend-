@@ -188,7 +188,7 @@ handleCheckout = () => {
       
       
       console.log(data1)
-       this.props.history.push("/")
+       this.props.history.push("/golf_courses")
   
       //  this.setState({
       //    current_cart: data1.cart_item

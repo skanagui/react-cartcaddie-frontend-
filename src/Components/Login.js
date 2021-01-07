@@ -31,6 +31,7 @@ class Login extends React.Component{
                 <form >
                 <input name="email_address" type="text" placeholder="email address" value={this.state.username} onChange={this.changeHandler} />
                 <input name="password_digest" type="password" placeholder="password" value={this.state.password_digest} onChange={this.changeHandler} />
+                <br></br>
                 <NavLink to={`/userprofile`} >
                     <button class="ui active button" type="submit"> <i class="user icon"></i>Log In</button>
                 </NavLink>

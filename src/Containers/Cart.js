@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import CartItem from "../Components/CartItem.js";
+import { Grid} from 'semantic-ui-react'
 
 
 export default class Cart extends Component {
@@ -59,18 +60,24 @@ export default class Cart extends Component {
             <>
             {this.props.cartItems.length ? <div className = "cart-item-container">
                 <h1>Cart Items</h1>
-                
+                <Grid columns={3} container relaxed>
                 {this.renderCartItems()}
+
+                </Grid>
                 
-                <h1>Cart Total:$ {this.props.cartItems.reduce((a,b)=>a+(b.item.price), 0)}  </h1>
+               
+                <br></br>
+                <br></br>
+                <div class="ui divider"></div>
+
 
                 
 
-
-                <div>
+                <div className="cart-total">
+                <h1>Cart Total:$ {this.props.cartItems.reduce((a,b)=>a+(b.item.price), 0)} </h1>
                      <form onSubmit={this.handleCheckout}>
                             
-                        <button width="100" height="100"className="button primary" type="submit"><i class="golf ball icon"></i>
+                        <button large class="ui green button" type="submit"><i class="golf ball icon"></i>
                                 Checkout
                         </button>
                             
@@ -78,6 +85,7 @@ export default class Cart extends Component {
                 </div>
             </div> : <div><div class="ui segment"><div class="ui active transition visible inverted dimmer"><div class="content"><div class="ui inverted text loader">Loading Cart</div></div></div><img src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" class="ui image"/></div></div>   }
             
+
             </>
         );
     }

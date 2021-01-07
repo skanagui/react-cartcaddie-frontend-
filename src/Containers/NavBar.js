@@ -9,18 +9,18 @@ export default class NavBar extends Component {
             <div>
                 <menu   className= "navbar" >
                 <Menu.Item className="login-link" as={NavLink} to="/login" exact>
-                    Login
+                    Login <i class="golf ball icon"></i>
                 </Menu.Item>
                 <Menu.Item className="home-link" as={NavLink} to="/userprofile" exact>
                     Home <i class="home icon"></i>
                 </Menu.Item>
-                <Menu.Item as={NavLink} to="/golf_courses" exact>
+                <Menu.Item className="home-link" as={NavLink} to="/golf_courses" exact>
                     Golf Courses <i class="flag icon"></i>
                 </Menu.Item>
-                <Menu.Item as={NavLink} to="/cart" exact>
+                <Menu.Item className="home-link" as={NavLink} to="/cart" exact>
                     Cart <i class="shopping cart icon"></i>
                 </Menu.Item>
-                <Menu.Item as={NavLink} to="/logout" exact>
+                <Menu.Item className="home-link" as={NavLink} to="/logout" exact>
                     Logout
                 </Menu.Item>
 

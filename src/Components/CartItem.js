@@ -15,8 +15,11 @@ export default class CartItem extends Component {
 
 
     render() {
-          console.log(this.props)
+          console.log(this.props.cartItem)
         return (
+
+            <>
+            <br></br>
 
             <Card className="item-card">
                 <Card.Content>
@@ -31,6 +34,9 @@ export default class CartItem extends Component {
 
                 </Card.Content>
             </Card>
+            <br></br>
+            </>
+            
 
 
 

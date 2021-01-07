@@ -5,21 +5,28 @@ import  "../Styles/CourseCard.css"
 
 export default class GolfCourse extends Component {
 
+    
+
     render() {
         // console.log(this.props)
         return (
 
-           <NavLink to="/items">
-                <Card className="card">
+            <>
+            <br></br>
+            <Card className="card">
                     <Card.Content>
+                    <NavLink to="/items">
                         <Card.Header>
                         {this.props.golfCourses.name}
                         </Card.Header>
-                        <Image fluid centered medium src={this.props.golfCourses.image}/>
-                        {/* <img src={this.props.golfCourses.image} height={300}></img> */}
+                    </NavLink>
+                        <Image fluid centered medium  src={this.props.golfCourses.image}/>
+                        {/* {this.props.golfCourses.address} */}
                     </Card.Content>
-                </Card>
-            </NavLink>
+                    {/* <button>More Info</button> */}
+            </Card>
+            </>
+
 
         )
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import GolfCourse from "../Components/GolfCourse"
 import NycCoursesHeader from '../Components/NycCoursesHeader';
-import { Card, Divider } from "semantic-ui-react"
+import { Card, Grid, Divider } from "semantic-ui-react"
 import  "../Styles/CourseCard.css"
 
 export default class GolfCourseContainer extends Component {
@@ -13,10 +13,16 @@ export default class GolfCourseContainer extends Component {
 
     render() {
         return (
+                <>
+             <h2><NycCoursesHeader></NycCoursesHeader></h2>
+             <br></br>
+            {/* <Card.Group class="container" itemsPerRow={3}>
+            </Card.Group> */}
+            <Grid columns={3} container relaxed>
+               {this.renderGolfCourses()} 
+            </Grid>
                 
-            // <h2><NycCoursesHeader></NycCoursesHeader></h2>
-            <Card.Group class="container" itemsPerRow={3}>{this.renderGolfCourses()}</Card.Group>
-                
+                </>
              
         );
     }

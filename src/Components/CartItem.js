@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Card, Div} from 'semantic-ui-react'
+import {Card, Image, Grid} from 'semantic-ui-react'
 
 export default class CartItem extends Component {
 
@@ -15,19 +15,29 @@ export default class CartItem extends Component {
 
 
     render() {
-          console.log(this.props.cartItem)
+          console.log(this.props)
         return (
-            <div >
 
-                
-                <img  alt ="item" src={this.props.cartItem.item.image}/>
-                <h2 >{this.props.cartItem.item.name}</h2> 
-                <h3>${this.props.cartItem.item.price}.00</h3>
-                <h3>QTY:{this.props.cartItem.quantity}</h3>
-                <p>{this.props.cartItem.item.description}</p>
-                <button type ="button" className="btn btn-danger" onClick={this.localRemoveItemHandler}>Remove From Cart</button>
-               
-            </div>
+            <Card className="item-card">
+                <Card.Content>
+                    <Card.Header>
+                    ${this.props.cartItem.item.price} -- {this.props.cartItem.item.name}
+                  <br></br>
+                    Description: {this.props.cartItem.item.description}
+                    
+                    </Card.Header>
+                    <Image fluid centered medium src={this.props.cartItem.item.image}/>
+                   <button class="ui yellow button">QTY:{this.props.cartItem.quantity}</button> <button type ="button" className="btn btn-danger" onClick={this.localRemoveItemHandler}>Remove From Cart</button>
+
+                </Card.Content>
+            </Card>
+
+
+
+
+
+
+            
         )
     }
 

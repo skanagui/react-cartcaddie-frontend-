@@ -53,7 +53,7 @@ export default class Cart extends Component {
 
     render() {
         
-        console.log(this.props.cartItems)
+        console.log(this.props)
         return (
 
             <>
@@ -61,7 +61,7 @@ export default class Cart extends Component {
                 <h1>Cart Items</h1>
                 
                 {this.renderCartItems()}
-
+                
                 <h1>Cart Total:$ {this.props.cartItems.reduce((a,b)=>a+(b.item.price), 0)}  </h1>
 
                 

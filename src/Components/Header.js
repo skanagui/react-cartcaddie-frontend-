@@ -1,11 +1,11 @@
 import React from 'react'
 import PrimaryHeader from "../Styles/PrimaryHeader.css"
-
+import '../Styles/logo.css'
 export default function Header() {
     return (
         <div>
             
-            <img alignment height="175px" src="./2.png" />
+            <img className="logo"alignment height="150px" src="./Logo.png" />
         </div>
     )
 }

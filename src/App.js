@@ -146,6 +146,7 @@ class App extends Component {
 /////////
 
 handleCheckout = () => {
+  alert("Your order is complete! Your items will be ready for you at the course! ");
     Promise.all([
       fetch('http://localhost:3000/api/v1/carts',{
         method: "POST",
@@ -180,7 +181,7 @@ handleCheckout = () => {
       console.log(data1, data2)
       this.setState({
         current_cart: data1.items, //cart_item,
-        // cartItems: []
+        //  cartItems: []
 
         
       })

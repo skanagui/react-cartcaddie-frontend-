@@ -35,6 +35,7 @@ export default class Item extends Component {
                 </Card.Content>
             </Card>
             <br></br>
+            
            </>
         
 

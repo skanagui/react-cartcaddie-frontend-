@@ -24,12 +24,12 @@ export default class CartItem extends Component {
             <Card className="item-card">
                 <Card.Content>
                     <Card.Header>
-                    ${this.props.cartItem.item.price} -- {this.props.cartItem.item.name}
+                    <button class="ui green button">${this.props.cartItem.item.price}</button>{this.props.cartItem.item.name}
                   <br></br>
-                    Description: {this.props.cartItem.item.description}
                     
                     </Card.Header>
                     <Image fluid centered medium src={this.props.cartItem.item.image}/>
+                    Description: {this.props.cartItem.item.description}
                    <button class="ui yellow button">QTY:{this.props.cartItem.quantity}</button> <button type ="button" className="btn btn-danger" onClick={this.localRemoveItemHandler}>Remove From Cart</button>
 
                 </Card.Content>

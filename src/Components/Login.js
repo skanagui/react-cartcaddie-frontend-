@@ -27,6 +27,7 @@ class Login extends React.Component{
         console.log(this.state)
 
         return(
+            
             <div className="login">
                 <form >
                 <input name="email_address" type="text" placeholder="email address" value={this.state.username} onChange={this.changeHandler} />

@@ -11,9 +11,19 @@ export default class ItemContainer extends Component {
     render() {
         return (
 
+            <>
+                <br></br>
+
                 <Grid columns={3} container relaxed>
                         {this.renderItems()}
                 </Grid>
+
+                <br></br>
+
+            </>
+
+            
+
 
             );
     }

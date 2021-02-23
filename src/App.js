@@ -146,7 +146,7 @@ class App extends Component {
 /////////
 
 handleCheckout = () => {
-  alert("Your order is complete! Your items will be ready for you at the course! ");
+  alert("Your order is complete! Your items will be ready for you at the course! Please provide your Order Number #: 8798465464 at the front window!  ");
     Promise.all([
       fetch('http://localhost:3000/api/v1/carts',{
         method: "POST",

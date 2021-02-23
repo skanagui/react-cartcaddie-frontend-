@@ -21,7 +21,8 @@ export default class GolfCourse extends Component {
                         </Card.Header>
                     </NavLink>
                         <Image fluid centered medium  src={this.props.golfCourses.image}/>
-                        {/* {this.props.golfCourses.address} */}
+                        {this.props.golfCourses.address}
+                        {/* <Image src={this.props.golfCourses.scorecard}/> */}
                     </Card.Content>
                     {/* <button>More Info</button> */}
             </Card>

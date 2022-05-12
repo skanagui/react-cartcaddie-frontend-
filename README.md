@@ -9,6 +9,12 @@ These needs were to:
 2. To increase revenues for golf course businesses by creating an online store. 
 3. To create a contactless Pro-Shop to insure the health of employees during these trying times. 
 
+
+The basic functionalities of the App is to mimic an e commerce site. 
+It has full CRUD functionalities so you can: 
+
+Create a new cart, add items to a cart, remove items, as well as recieve an updated total amount. 
+
 # Technologies Used
 I used a Ruby on Rails API  Backend 
 React JS  Front End 
